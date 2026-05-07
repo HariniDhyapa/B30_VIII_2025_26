@@ -188,26 +188,4 @@ kubectl port-forward -n ecommerce svc/payment 8004:8000
 - Resource requests/limits are included so the manifests look closer to production-style deployments
 - The current setup is intentionally lightweight and keeps your existing Docker workflow untouched
 
-## CI/CD
 
-GitHub Actions workflow: `.github/workflows/ci.yml`
-- validate code with `ruff`, syntax compilation, and `docker compose config`
-- build all service images, including the frontend verifier
-- boot the full stack in CI and run the PowerShell smoke test end-to-end
-
-This gives you a clean DevOps story for interviews:
-- CI validates the code and infrastructure config
-- Docker Compose verifies the full stack locally and in automation
-- Kubernetes manifests provide the next deployment step with probes and resource controls
-
-## Free-Tier Notes
-
-- Local stack (Docker + Minikube): `$0`
-- GitHub Actions free minutes: up to 2000/min per month (account-dependent)
-- Optional AWS EC2 `t2.micro` / `t3.micro` deployment can stay in free-tier limits with low usage
-
-## Resume Bullet Ideas
-
-- Built a schema-isolated multi-tenant e-commerce platform with FastAPI microservices.
-- Implemented JWT tenant context with OAuth2 login, seller/customer separation, Redis caching/carts, and RabbitMQ event-driven order-payment orchestration.
-- Containerized and deployed locally on Docker Compose and Kubernetes (Minikube) with CI pipeline on GitHub Actions.
